@@ -44,6 +44,8 @@ node *deletep(node *head,int pos)
     node *head2=head;
     int i=0;
     node *prev=NULL;
+    if(pos!=1)
+    {
     while(i!=pos-1)
     {
         prev=head;
@@ -53,6 +55,12 @@ node *deletep(node *head,int pos)
     prev->next=head->next;
     head->next=NULL;
     return head2;
+    }
+    else
+    {
+       head2=head2->next;
+        return head2;
+    }
 }
 int main()
 {
