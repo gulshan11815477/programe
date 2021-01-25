@@ -1,0 +1,83 @@
+// delete by value
+// all test case passed
+#include<iostream>
+using namespace std;
+
+struct node
+{
+    int data;
+    node *next;
+    node(int p)
+    {
+        data=p;
+        next=NULL;
+    }
+};
+node *head;
+void printlist()
+{
+    node *head2=head;
+    while(head2!=NULL)
+    {
+        cout<<head2->data<<"->";
+        head2=head2->next;
+    }
+}
+
+node * insertE(int p)
+{
+    node *temp=new node(p);
+    node *head2=head;
+    if(head2==NULL)
+    {
+        head2=temp;
+        return head2;
+    }
+    else
+    {
+     while(head2->next!=NULL)
+     {
+        head2=head2->next;
+     }
+     head2->next=temp;
+     return head;
+    }
+    
+}
+node *deletep(int v)
+{
+    node *head2=head;
+    node *prev=NULL;
+    if(head2->data==v)
+    {
+        head2=head2->next;
+        return head2;
+    }
+    else
+    {
+        while(head2->data!=v)
+        {
+            prev=head2;
+            head2=head2->next;
+        }
+        prev->next=head2->next;
+        head2->next=NULL;
+        return head;
+    }
+    
+    
+}
+
+int main()
+{
+    head=insertE(94);
+    head=insertE(31);
+    head=insertE(65);
+    head=insertE(89);
+    head=insertE(31);
+    printlist();
+    cout<<"after deleting 65\n";
+    head=deletep(94);
+    printlist();
+    return 0;
+}
