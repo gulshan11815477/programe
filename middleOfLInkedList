@@ -1,0 +1,74 @@
+/// find midle of linked list;
+#include<iostream>
+using namespace std;
+struct node
+{
+    int data;
+    node *next;
+    node(int p)
+    {
+        data=p;
+        next=NULL;
+    }
+};
+void printlist(node *head)
+{
+    while(head!=NULL)
+    {
+        cout<<head->data<<"->";
+       head=head->next;
+    }
+}
+node * insertE(node *head,int p)
+{
+    node*temp=new node(p);
+    node *head2=head;
+    if(head2==NULL)
+    {
+        head2=temp;
+        return head2;
+    }
+    else
+    {
+        while(head2->next!=NULL)
+        {
+            head2=head2->next;
+        }
+        head2->next=temp;
+        return head;
+        
+    }
+}
+node * middle(node *head)
+{
+    node *slow,*fast;
+    slow=head;
+    fast=head;
+    if(head!=NULL)
+    {
+        while(fast!=NULL&&fast->next!=NULL)
+        {
+            fast=fast->next->next;
+            slow=slow->next;
+        }
+        return slow; 
+    }
+    else return head;
+    
+}
+
+
+int main()
+{
+    node *head=NULL;
+    head=insertE(head,94);
+    head=insertE(head,31);
+    head=insertE(head,65);
+    head=insertE(head,89);
+    head=insertE(head,31);
+    head=insertE(head,82);
+    printlist(head);
+    node *mid=middle(head);
+    cout<<mid->data;
+    return 0;
+}
