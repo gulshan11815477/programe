@@ -64,6 +64,7 @@ node *deletep(node *head,int pos)
 }
 int main()
 {
+     int abc;
     node *head=NULL;
     head=inserE(head,94);
     head=inserE(head,31);
